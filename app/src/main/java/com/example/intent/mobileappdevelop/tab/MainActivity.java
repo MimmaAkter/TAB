@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabTextColors(Color.WHITE, Color.GREEN);
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
 
+        Toast.makeText(this, "Git test", Toast.LENGTH_SHORT).show();
         currentWeatherfragment =
                 new CurrentWeatherfragment();
         forecaseWatherFragment =
