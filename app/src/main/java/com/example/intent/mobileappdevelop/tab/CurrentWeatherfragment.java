@@ -8,12 +8,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.intent.mobileappdevelop.tab.WeatherAsync.WeatherClient;
 import com.example.intent.mobileappdevelop.tab.WeatherAsync.WeatherPojo.WeatherData;
 import com.example.intent.mobileappdevelop.tab.WeatherAsync.WeatherService;
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +32,7 @@ public class CurrentWeatherfragment extends Fragment implements LocationFoundLis
     private boolean isLocationFound;
     private TextView textView;
     private String baseUrl = "https://api.openweathermap.org/data/2.5/";
+    private ImageView imageView;
     public CurrentWeatherfragment() {
         // Required empty public constructor
     }
@@ -46,6 +49,7 @@ public class CurrentWeatherfragment extends Fragment implements LocationFoundLis
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         textView = view.findViewById(R.id.textrrrr);
+        imageView = view.findViewById(R.id.imgView);
 
     }
 
@@ -66,6 +70,10 @@ public class CurrentWeatherfragment extends Fragment implements LocationFoundLis
                             WeatherData weather = response.body();
                             Double temp =  weather.getMain().getTemp();
                             Double humidity = weather.getMain().getHumidity();
+                            Picasso.get().load(
+                                    "https://openweathermap.org/img/w/"+
+                                    weather.getWeather().get(0).getIcon()+".png").into(imageView);
+                           // textView.setText(weather.getWeather().toString());
                             textView.setText("Temp: "+String.valueOf(temp)+"\n"+"Humidity: "+String.valueOf(humidity));
                         }
                     }

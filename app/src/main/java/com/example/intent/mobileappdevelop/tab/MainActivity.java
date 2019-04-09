@@ -47,13 +47,12 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabTextColors(Color.WHITE, Color.GREEN);
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
 
-        Toast.makeText(this, "Git test ttt444kkk ", Toast.LENGTH_SHORT).show();
         currentWeatherfragment =
                 new CurrentWeatherfragment();
         forecaseWatherFragment =
                 new ForecaseWatherFragment();
         foundListinerCurrent = currentWeatherfragment;
-        foundListinerForecast = currentWeatherfragment;
+        foundListinerForecast = forecaseWatherFragment;
 
 
         locationProviderClient =
